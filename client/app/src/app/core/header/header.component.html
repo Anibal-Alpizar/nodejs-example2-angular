@@ -1,13 +1,14 @@
 <mat-toolbar color="primary">
   <button
     mat-icon-button
+    [matMenuTriggerFor]="menu1"
     class="example-icon"
     aria-label="Example icon-button with menu icon"
-    [matMenuTriggerFor]="menu1"
   >
     <mat-icon>menu</mat-icon>
   </button>
   <span>Videojuegos</span>
+  <span class="example-spacer"></span>
   <mat-menu #menu1="matMenu">
     <button
       mat-menu-item
@@ -16,20 +17,18 @@
     >
       Inicio
     </button>
-
-    <button
-      mat-menu-item
-      [routerLink]="['/acerca-de']"
-      routerLinkActive="mat-raised-button"
-    >
-      Acerca de
-    </button>
-
     <button
       mat-menu-item
       [routerLink]="['/']"
       routerLinkActive="mat-raised-button"
+    >
+      Acerca de
+    </button>
+    <button
+      mat-menu-item
       [matMenuTriggerFor]="menu2"
+      [routerLink]="['/']"
+      routerLinkActive="mat-raised-button"
     >
       Mantenimiento
     </button>
@@ -38,23 +37,37 @@
   <mat-menu #menu2="matMenu">
     <button
       mat-menu-item
-      [routerLink]="['/acerca-de']"
+      [routerLink]="['/']"
       routerLinkActive="mat-raised-button"
     >
-      Acerca de
+      Videojuegos
     </button>
   </mat-menu>
-  <span class="example-spacer"></span>
-</mat-toolbar>
 
-<mat-menu>
   <div class="example-button-container" align="end"></div>
   <div class="example-spacer"></div>
   <div class="example-spacer">
     <button mat-icon-button>
-      <mat-icon>Shopping_cart</mat-icon>
+      <mat-icon>shopping_cart</mat-icon>
     </button>
-    <!--Users-->
-    <span class="mat-caption"></span>
+    <!--Usuario-->
+    <span class="mat-caption" *ngIf="isAuthenticated">{{
+      currentUser.email
+    }}</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu3">
+      <mat-icon [ngStyle]="{color: isAuthenticated ? 'white' : '#9E9E9E'}">person</mat-icon>
+    </button>
+
+    <!--Menu usuario-->
+    <mat-menu #menu3="matMenu">
+      <a mat-menu-item *ngIf="!(isAuthenticated)">
+        <mat-icon>person_add</mat-icon>
+        <span>Login</span>
+      </a>
+      <a mat-menu-item *ngIf="isAuthenticated">
+        <mat-icon>person_remove</mat-icon>
+        <span>Logout</span>
+      </a>
+    </mat-menu>
   </div>
-</mat-menu>
+</mat-toolbar>

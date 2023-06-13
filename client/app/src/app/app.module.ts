@@ -9,12 +9,15 @@ import { ShareModule } from './share/share.module';
 import { HomeModule } from './home/home.module';
 import { UserModule } from './user/user.module';
 import { VideojuegoModule } from './videojuego/videojuego.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(), 
+
     //Modulos de la aplicación
     CoreModule,
     ShareModule,
