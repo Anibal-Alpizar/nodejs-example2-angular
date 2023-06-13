@@ -11,9 +11,7 @@ import { UserModule } from './user/user.module';
 import { VideojuegoModule } from './videojuego/videojuego.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -24,12 +22,11 @@ import { VideojuegoModule } from './videojuego/videojuego.module';
     HomeModule,
     UserModule,
     VideojuegoModule,
-    
+
     //Siempre de último
-    AppRoutingModule   
-   
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
